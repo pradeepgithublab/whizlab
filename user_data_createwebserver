@@ -8,3 +8,12 @@ chmod 644 /var/www/html/index.html
 echo "<h1>Hello, this index2.html page from $(hostname -f)</h1>" > /var/www/html/index2.html
 chmod 644 /var/www/html/index2.html
 systemctl restart httpd         			
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#!/bin/bash     
+sudo su     
+yum update -y       
+yum install httpd -y            
+echo "<html><h1> Welcome to Whizlabs Server 1 </h1><html>" > /var/www/html/index.html               
+systemctl start httpd       
+systemctl enable httpd		
