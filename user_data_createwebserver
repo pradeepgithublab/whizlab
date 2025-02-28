@@ -49,4 +49,16 @@ mkdir user
 cd user
 
 # Download the index.html file for the user section from a specified URL
-wget https://labtask228.s3.amazonaws.com/user/index.html			
+wget https://labtask228.s3.amazonaws.com/user/index.html		
+
+*************************************************************
+#!/bin/bash
+sudo su 
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+cd /var/www/html/
+wget https://labresources.whizlabs.com/92a9ca7235acf4a0ad31e9c76c42b92d/index.html
+systemctl restart httpd
+********************************************************************************
