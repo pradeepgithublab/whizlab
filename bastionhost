@@ -1,0 +1,26 @@
+Task 10: SSH into Endpoint instance (Privately accessible) through Bastion host
+SSH into the Bastion instance using the Bastion PEM key: WhizKey.pem
+
+To SSH into Endpoint instance via the Bastion instance, we need the WhizKey.pem to be present on the Bastion instance.
+
+Open the WhizKey.pem file on your local system and then copy the text content.
+
+Navigate to the Bastion Instance and create a file named WhizKey.pem using the below command:  
+
+vi WhizKey.pem
+Paste the content and save it by pressing shift+colon  followed by :wq! and then enter to save your private key.
+
+Make sure you have changed the permission of the key file to 400. You can change the permission using the below command:
+
+chmod 400 WhizKey.pem
+
+
+Now you can log into the web servers using the private key copied to the bastion server with the help of the below commands. 
+
+Note: You don't have public IP's for the Endpoint instance since we created them in a private subnet.
+
+Syntax : ssh -i WhizKey.pem  ec2-user@<Endpoint instance's Private IP>
+
+Example: ssh -i WhizKey.pem  ec2-user@192.168.0.55.
+
+When asked for confirmation type: yes
