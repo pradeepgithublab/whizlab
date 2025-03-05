@@ -1,39 +1,30 @@
 ## The role of this policy is to create IAM role to send vpc flow logs to cloud watch log group
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:AssociateVpcCidrBlock",
-                "ec2:AuthorizeSecurityGroupEgress",
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:CreateEgressOnlyInternetGateway",
-                "ec2:CreateFlowLogs",
-                "ec2:CreateRoute",
-                "ec2:CreateRouteTable",
-                "ec2:CreateSecurityGroup",
-                "ec2:CreateSubnet",
-                "ec2:CreateTags",
-                "ec2:CreateVpc",
-                "ec2:Describe*",
-                "ec2:EnableVgwRoutePropagation",
-                "ec2:EnableVpcClassicLink",
-                "ec2:EnableVpcClassicLinkDnsSupport",
-                "ec2:MoveAddressToVpc",
-                "ec2:RestoreAddressToClassic",
-                "ec2:RevokeSecurityGroupEgress",
-                "ec2:RevokeSecurityGroupIngress",
-                "ec2:UnassignPrivateIpAddresses",
-                "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
-                "ec2:UpdateSecurityGroupRuleDescriptionsIngress"
-            ],
-            "Resource": "*",
-            "Condition": {
-                "StringEquals": {
-                    "aws:RequestedRegion": "us-east-1"
-                }
-            }
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams"
+      ],
+      "Resource": "arn:aws:logs:*:*:*"
+    }
+  ]
+}
+#### next is trust policy
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "vpc-flow-logs.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
 }
