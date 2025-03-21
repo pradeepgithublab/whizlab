@@ -1,0 +1,39 @@
+{
+  "detail-type": ["EC2 Instance State-change Notification"],
+  "source": ["aws.ec2"]
+}
+
+Task Details
+Sign into AWS Management Console.
+
+Setup Visual Studio Code
+
+Create a variable file.
+
+Create a security group in main.tf file
+
+Create a Key pair in main.tf file
+
+Launch an EC2 Instance in main.tf file
+
+Create SNS Topic in main.tf file
+
+Create SNS Topic Subscription in main.tf file
+
+Create CloudWatch Event in main.tf file
+
+Create an output file
+
+Confirm the installation of Terraform by checking the version.
+
+Apply terraform configurations
+
+Confirm the Subscription on your email id
+
+Check the resources in AWS Console
+
+Test Cloudwatch Event
+
+Validation of the Lab
+
+Delete AWS Resources
