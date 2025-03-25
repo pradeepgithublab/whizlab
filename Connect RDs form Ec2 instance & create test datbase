@@ -1,0 +1,67 @@
+### Connect RDs form Ec2 instance & create test datbase
+
+
+>>Select the instance and click on the Connect button.
+>>Click on Connect button. It will open in the new tab. Wait for 2-3 minutes to start.
+>>You will be logged into the EC2 Instance. 
+>>Once connected to the user:
+
+Change to root user : Enter
+
+sudo su
+Check if Mysql is installed or not : 
+mysql --version
+Connect to the MYSQL RDS Instance with the following command:
+
+Syntax: mysql -h <mysql-instance-endpoint> -P 3306 -u <username> -p
+In our case : mysql -h mydatabaseinstance.c9cbqhohqjen.us-east-1.rds.amazonaws.com -P 3306 -u whizuser -p
+Note: -P is used for specifying port number and -p is defined for password. 
+Password: Enter whizpassword
+
+
+
+ You will enter the MYSQL Command line.
+Task 10: Create a database, table and insert data for testing
+Let's create a simple database and table to see if it’s working.
+
+Create a database:
+>>CREATE DATABASE SchoolDB;
+You can see the created database with following command:
+>>show databases;
+Switch to the database named SchoolDB.
+
+>>use SchoolDB;
+Create a sample table:
+>>CREATE TABLE IF NOT EXISTS subjects (subject_id INT AUTO_INCREMENT,subject_name VARCHAR(255) NOT NULL,teacher VARCHAR(255),start_date DATE,lesson TEXT,PRIMARY KEY (subject_id)) ENGINE=INNODB;
+ Enter to see the table you just created.
+>>show tables;
+Insert some details into the table:
+>>INSERT INTO subjects(subject_name, teacher) VALUES ('English', 'John Taylor');
+>>INSERT INTO subjects(subject_name, teacher) VALUES ('Science', 'Mary Smith');
+>>INSERT INTO subjects(subject_name, teacher) VALUES ('Maths', 'Ted Miller');
+>>INSERT INTO subjects(subject_name, teacher) VALUES ('Arts', 'Suzan Carpenter');
+Let's check the items we added into the table:
+>>select * from subjects;
+
+
+Exit the Database
+
+exit;
+
+Task 11: Validation of the Lab
+Once the lab steps are completed, please click on the Validation button on the left side panel.
+
+This will validate the resources in the AWS account and displays whether you have completed this lab successfully or not.
+
+Sample output : 
+
+
+
+Task 12: Delete AWS Resources
+To delete the resources, open Terminal again.
+
+Run the below command to delete all the resources.
+
+terraform destroy
+Enter yes to confirm the deletion.
+
